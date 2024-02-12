@@ -14,24 +14,24 @@ class Category:
         self.category_quantity = category_quantity
         self.unic_prod_quantity = unic_prod_quantity
 
-        Category.category_counting += 1
+        Category.category_quantity += 1
         quantity = len(set(product.name for product in self.__products))
         self.unic_prod_quantity += quantity
 
 
-    @property
-    def products(self):
-        return self.__products
-
-    @property
-    def goods(self):
-        product_list = []
-        for product in self.__products:
-            product_list.append(f'{product.name}, {int(product.price)} руб. Остаток: {product.quantity} шт.')
-        return product_list
-
-    def add_products(self, product):
-        self.__products.append(product)
+    # @property
+    # def products(self):
+    #     return self.__products
+    #
+    # @property
+    # def goods(self):
+    #     product_list = []
+    #     for product in self.__products:
+    #         product_list.append(f'{product.name}, {int(product.price)} руб. Остаток: {product.quantity} шт.')
+    #     return product_list
+    #
+    # def add_products(self, product):
+    #     self.__products.append(product)
 
 
 
@@ -41,7 +41,7 @@ class Product:
     name: str
     description: str
     price: float
-    quantity: int
+    quantity: int  # количество в наличии
     product_list = []
 
     def __init__(self, name, description, price, quantity):
