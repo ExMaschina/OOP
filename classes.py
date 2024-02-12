@@ -2,8 +2,9 @@ class Category:
     name: str  # атрибуты (свойства) класса
     description: str
     products: int
-    category_quantity: int
-    unic_prod_count: int
+    
+    category_quantity = 0
+    unic_prod_count = 0
 
     def __init__(self, name, description, products, category_quantity, unic_prod_count):  # конструктор
         self.name = name
