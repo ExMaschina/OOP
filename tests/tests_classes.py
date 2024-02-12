@@ -1,5 +1,5 @@
 import pytest
-from classes import Category, Product
+from src.classes import Category, Product
 
 """Проверка корректности инициализации классов Category и Product"""
 
@@ -16,7 +16,7 @@ def test_init_category(category_products):
     assert category_products.description == 'healthy foods'
     assert category_products.products == 'Milk, cheese'
     assert category_products.category_quantity == 5
-    assert category_products.unic_prod_count == 2
+    assert category_products.unic_prod_quantity == 2
 
 
 """Класс Product"""
