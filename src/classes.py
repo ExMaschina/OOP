@@ -13,12 +13,8 @@ class Category:
 
         Category.gener_category_quantity += 1
         Category.gener_unic_prod_quantity += 1
-        """
-        2 строки ниже для следующей дз. пока не могу с ними разобраться
-        выдаёт ошибку атрибута
-        """
-        # quantity = len(set(product.category_name for product in self.products))
-        # self.gener_unic_prod_quantity += quantity
+        quantity = len(set(product.category_name for product in self.products))
+        Category.gener_unic_prod_quantity += quantity
 
 
 class Product:
