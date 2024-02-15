@@ -12,8 +12,7 @@ class Category:
         self.products = products
 
         Category.gener_category_quantity += 1
-        Category.gener_unic_prod_quantity += 1
-        quantity = len(set(product.category_name for product in self.products))
+        quantity = len(set(product for product in self.products))
         Category.gener_unic_prod_quantity += quantity
 
 
