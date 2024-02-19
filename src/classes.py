@@ -1,5 +1,5 @@
-"""Класс Category"""
 class Category:
+    """Класс Category"""
     name: str  # атрибуты (свойства) класса
     description: str
     products: int
@@ -18,26 +18,26 @@ class Category:
         quantity = len(set(product.name for product in self.__products))
         self.unic_prod_quantity += quantity
 
+    @property
+    def products(self):
+        return self.__products
 
-    # @property
-    # def products(self):
-    #     return self.__products
-    #
-    # @property
-    # def goods(self):
-    #     product_list = []
-    #     for product in self.__products:
-    #         product_list.append(f'{product.name}, {int(product.price)} руб. Остаток: {product.quantity} шт.')
-    #     return product_list
-    #
-    # def add_products(self, product):
-    #     self.__products.append(product)
+    @property
+    def goods(self):
+        product_list = []
+        for product in self.__products:
+            product_list.append(f'{product.name}, {int(product.price)} руб. Остаток: {product.quantity} шт.')
+        return product_list
 
+    def add_products(self, product):
+        self.__products.append(product)
 
+    def __repr__(self):
+        return f"Category{self.name}; {self.description}; {self.products}"
 
-"""Класс Product"""
 
 class Product:
+    """Класс Product"""
     name: str
     description: str
     price: float
@@ -50,9 +50,45 @@ class Product:
         self.price = price
         self.quantity = quantity
 
+    @classmethod
+    def new_product(cls, product_list, name, description, price, quantity):
+        """Возврат нового объекта товара и проверка совпадения нового объекта товара с текущим"""
+        new_object = cls(name, description, price, quantity)
+
+        for product in product_list:
+            if product.name == new_object.name:
+                product.quantity += new_object.quantity
+                if new_object.price > product.price:
+                    product.price = new_object.price
+        return new_object
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self,price):
+        if price > self.__price:
+            self.__price = price
+        elif price < 0 or price == self.__price:
+            print("Цена введена некорректно.")
+        else:
+            while True:
+                user_answer = input("Цена снижена. Установить эту цену?(yes-да, no-нет).")
+                if user_answer == "yes":
+                    self.__price = price
+                    break
+                elif user_answer == "no":
+                    print("Цена не изменилась.")
+                    break
+                else:
+                    print("Введите корректный ответ: 'yes' или 'no'.")
+
     def product_quantity(self):
         return self.quantity
 
     def create_product(self, product):
         return product.append(product_list)
 
+    def __repr__(self):
+        return f"Product{self.name}; {self.description}; {self.price}; {self.quantity}"
