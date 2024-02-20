@@ -32,6 +32,9 @@ class Category:
     def add_products(self, product):
         self.__products.append(product)
 
+    def __len__(self):
+        return f'{Category.name}, количество продуктов: {len(Product.quantity)} шт.'
+
     def __repr__(self):
         return f"Category{self.name}; {self.description}; {self.products}"
 
@@ -47,7 +50,7 @@ class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
 
     @classmethod
@@ -84,11 +87,11 @@ class Product:
                 else:
                     print("Введите корректный ответ: 'yes' или 'no'.")
 
-    def product_quantity(self):
-        return self.quantity
+    def __str__(self):
+        return f'{Product.name}, {int(Product.__price)} руб. Остаток: {Product.quantity} шт.'
 
-    def create_product(self, product):
-        return product.append(product_list)
+    def __add__(self, other):
+        return (self.quantity * self.__price) + (other.quantity * other.__price)
 
     def __repr__(self):
         return f"Product{self.name}; {self.description}; {self.price}; {self.quantity}"
