@@ -33,7 +33,10 @@ class Category:
         self.__products.append(product)
 
     def __len__(self):
-        return len(self.products)
+        quant = 0
+        for product in self.__products:
+            quant += Product.quantity
+        return quant
 
     def __str__(self):
         return f'{self.name}, количество продуктов: {len(self)} шт.'
