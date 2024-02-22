@@ -4,8 +4,8 @@ class Category:
     description: str  # описание
     products: int  # продукты
 
-    category_quantity = 0
-    unic_prod_quantity = 0
+    category_quantity = 0  # общее количество категорий
+    unic_prod_quantity = 0  # общее количество уникальных продуктов
 
     def __init__(self, name, description, products, category_quantity, unic_prod_quantity):  # конструктор
         self.name = name
@@ -33,11 +33,10 @@ class Category:
         self.__products.append(product)
 
     def __len__(self):
-        len_quantity_categ = len(self.products)
-        return len_quantity_categ
+        return len(self.products)
 
     def __str__(self):
-        return f'{self.name}, {int(self.__price)}: {len_quantity_categ} шт.'
+        return f'{self.name}, количество продуктов: {len(self)} шт.'
 
     def __repr__(self):
         return f"Category{self.name}; {self.description}; {self.products}"
@@ -91,11 +90,8 @@ class Product:
                 else:
                     print("Введите корректный ответ: 'yes' или 'no'.")
 
-    def __len__(self):
-        len_quantity_prod = len(product_list)
-        return len_quantity_prod
     def __str__(self):
-        return f'{self.name}, {int(self.__price)} руб. Остаток: {len_quantity_prod} шт.'
+        return f'{self.name}, {int(self.__price)} руб. Остаток: {self.quantity} шт.'
 
     def __add__(self, other):
         return (self.quantity * self.__price) + (other.quantity * other.__price)
