@@ -35,7 +35,7 @@ class Category:
     def __len__(self):
         quant = 0
         for product in self.__products:
-            quant += Product.quantity
+            quant += product.quantity
         return quant
 
     def __str__(self):
