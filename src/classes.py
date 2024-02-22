@@ -36,7 +36,7 @@ class Category:
         return len(self.products)
 
     def __str__(self):
-        return f'{self.name}, количество продуктов: {len(Product.product_list)} шт.'
+        return f'{self.name}, количество продуктов: {len(self)} шт.'
 
     def __repr__(self):
         return f"Category{self.name}; {self.description}; {self.products}"
