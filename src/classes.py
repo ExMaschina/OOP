@@ -1,8 +1,8 @@
 class Category:
     """Класс Category"""
-    name: str  # атрибуты (свойства) класса
-    description: str
-    products: int
+    name: str  # название
+    description: str  # описание
+    products: int  # продукты
 
     category_quantity = 0
     unic_prod_quantity = 0
@@ -33,7 +33,11 @@ class Category:
         self.__products.append(product)
 
     def __len__(self):
-        return f'{Category.name}, количество продуктов: {len(Product.quantity)} шт.'
+        len_quantity_categ = len(self.products)
+        return len_quantity_categ
+
+    def __str__(self):
+        return f'{self.name}, {int(self.__price)}: {len_quantity_categ} шт.'
 
     def __repr__(self):
         return f"Category{self.name}; {self.description}; {self.products}"
@@ -41,11 +45,11 @@ class Category:
 
 class Product:
     """Класс Product"""
-    name: str
-    description: str
-    price: float
+    name: str  # название
+    description: str  # описание
+    price: float  # цена
     quantity: int  # количество в наличии
-    product_list = []
+    product_list = []  #
 
     def __init__(self, name, description, price, quantity):
         self.name = name
@@ -87,8 +91,11 @@ class Product:
                 else:
                     print("Введите корректный ответ: 'yes' или 'no'.")
 
+    def __len__(self):
+        len_quantity_prod = len(product_list)
+        return len_quantity_prod
     def __str__(self):
-        return f'{Product.name}, {int(Product.__price)} руб. Остаток: {Product.quantity} шт.'
+        return f'{self.name}, {int(self.__price)} руб. Остаток: {len_quantity_prod} шт.'
 
     def __add__(self, other):
         return (self.quantity * self.__price) + (other.quantity * other.__price)
