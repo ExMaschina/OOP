@@ -50,6 +50,7 @@ class Product:
     name: str  # название
     description: str  # описание
     price: float  # цена
+    color: str  # цвет
     quantity: int  # количество в наличии
     product_list = []  #
 
@@ -57,6 +58,7 @@ class Product:
         self.name = name
         self.description = description
         self.__price = price
+        self.color = color
         self.quantity = quantity
 
     @classmethod
@@ -97,6 +99,8 @@ class Product:
         return f'{self.name}, {int(self.__price)} руб. Остаток: {self.quantity} шт.'
 
     def __add__(self, other):
+        if not isinstance(other, Product):
+            raise ValueError('Складывать можно только объекты Employee и дочерние от них.')
         return (self.quantity * self.__price) + (other.quantity * other.__price)
 
     def __repr__(self):
