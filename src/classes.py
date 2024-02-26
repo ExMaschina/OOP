@@ -63,9 +63,11 @@ class Product:
 
     @classmethod
     def new_product(cls, product_list, name, description, price, quantity):
-        """Возврат нового объекта товара и проверка совпадения нового объекта товара с текущим"""
+        """Создание нового объекта товара и проверка совпадения нового объекта товара с текущим"""
         new_object = cls(name, description, price, quantity)
 
+        if not isinstance(other, Product):
+            raise ValueError('Добавлять можно только объекты Product и дочерние от них.')
         for product in product_list:
             if product.name == new_object.name:
                 product.quantity += new_object.quantity
@@ -100,7 +102,7 @@ class Product:
 
     def __add__(self, other):
         if not isinstance(other, Product):
-            raise ValueError('Складывать можно только объекты Employee и дочерние от них.')
+            raise ValueError('Складывать можно только объекты Product и дочерние от них.')
         return (self.quantity * self.__price) + (other.quantity * other.__price)
 
     def __repr__(self):

@@ -6,8 +6,8 @@ class Smartphone(Product):
     model: str  # модель
     memory_capacity: int  # объём встроенной памяти
 
-    def __init__(self, name, description, price, quantity):
-        super().__init__(name, description, price, quantity, performance, model, memory_capacity)
+    def __init__(self, name, description, price, color, quantity, performance, model, memory_capacity):
+        super().__init__(name, description, color, price, quantity)
         self.performance = performance
         self.model = model
         self.memory_capacity = memory_capacity
@@ -18,12 +18,12 @@ class Smartphone(Product):
     #     return (self.quantity * self.__price) + (other.quantity * other.__price)
 
 
-class Lawn_Grass(Product):
+class LawnGrass(Product):
     manufacturer_country: str  # страна-производитель
     germination_period: float  # срок прорастания
 
-    def __init__(self, name, description, price, quantity):
-        super().__init__(name, description, price, quantity, manufacturer_country, germination_period)
+    def __init__(self, name, description, price, color, quantity, manufacturer_country, germination_period):
+        super().__init__(name, description, price, color, quantity)
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
 
