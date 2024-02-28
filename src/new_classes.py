@@ -12,10 +12,14 @@ class Smartphone(Product):
         self.model = model
         self.memory_capacity = memory_capacity
 
-    # def __add__(self, other):
-    #     if not isinstance(other, Product):
-    #         raise ValueError('Складывать можно только объекты Product и дочерние от них.')
-    #     return (self.quantity * self.__price) + (other.quantity * other.__price)
+    def new_product(self):
+        pass
+
+    def price(self):
+        pass
+
+    def __repr__(self):
+        return f'Объект {self.name} с атрибутами {self.description}, {self.price}, {self.color}, {self.quantity}, {self.performance}, {self.model}, {self.memory_capacity}.'
 
 
 class LawnGrass(Product):
@@ -27,10 +31,29 @@ class LawnGrass(Product):
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
 
-    # def __add__(self, other):
-    #     if isinstance(other, Product):
-    #         return (self.quantity * self.__price) + (other.quantity * other.__price)
-    #     else:
-    #         return
+    def new_product(self):
+        pass
+
+    def price(self):
+        pass
+
+    def __repr__(self):
+        return f'Объект {self.name} с атрибутами {self.description}, {self.price}, {self.color}, {self.quantity}, {self.manufacturer_country}, {self.germination_period}.'
 
 
+class MixinRepr:
+
+    def __init__(self):
+        self.name = self.name
+        self.description = self.description
+        self.price = self.price
+        self.color = self.color
+        self.quantity = self.quantity
+        self.manufacturer_country = self.manufacturer_country
+        self.germination_period = self.germination_period
+        self.performance = self.performance
+        self.model = self.model
+        self.capacity = self.capacity
+
+    def repr_out(self):
+        print(f'Объект {self.name}; {self.description}, {self.price}, {self.color}, {self.quantity}, {self.manufacturer_country}, {self.germination_period}')

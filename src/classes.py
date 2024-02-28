@@ -45,7 +45,7 @@ class Category:
         return f"Category{self.name}; {self.description}; {self.products}"
 
 
-class Product:
+class Product(AbsProd):
     """Класс Product"""
     name: str  # название
     description: str  # описание
