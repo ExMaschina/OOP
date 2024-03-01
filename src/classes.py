@@ -63,6 +63,7 @@ class Product(AbsProd):
         self.__price = price
         self.color = color
         self.quantity = quantity
+        __repr__()
 
     @classmethod
     def new_product(cls, product_list, name, description, price, quantity):
@@ -107,6 +108,3 @@ class Product(AbsProd):
         if not isinstance(other, Product):
             raise ValueError('Складывать можно только объекты Product и дочерние от них.')
         return (self.quantity * self.__price) + (other.quantity * other.__price)
-
-    def __repr__(self):
-        return f"Product{self.name}; {self.description}; {self.price}; {self.quantity}"

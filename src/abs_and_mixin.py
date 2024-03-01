@@ -29,6 +29,5 @@ class MixinRepr:
         self.model = self.model
         self.capacity = self.capacity
 
-    def repr_out(self):
-        print(
-            f'Объект {self.name}; {self.description}, {self.price}, {self.color}, {self.quantity}, {self.manufacturer_country}, {self.germination_period}')
+    def __repr__(self):
+        print(f'Объект {self.name}; {self.description}, {self.price}, {self.color}, {self.quantity}, {self.manufacturer_country}, {self.germination_period}')
