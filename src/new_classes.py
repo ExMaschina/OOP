@@ -12,15 +12,13 @@ class Smartphone(Product, MixinRepr):
         self.performance = performance
         self.model = model
         self.memory_capacity = memory_capacity
+        __repr__()
 
     def new_product(self):
         pass
 
     def price(self):
         pass
-
-    def __repr__(self):
-        return f'Объект {self.name} с атрибутами {self.description}, {self.price}, {self.color}, {self.quantity}, {self.performance}, {self.model}, {self.memory_capacity}.'
 
 
 class LawnGrass(Product, MixinRepr):
@@ -31,13 +29,10 @@ class LawnGrass(Product, MixinRepr):
         super().__init__(name, description, price, color, quantity)
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
+        __repr__()
 
     def new_product(self):
         pass
 
     def price(self):
         pass
-
-    def __repr__(self):
-        return f'Объект {self.name} с атрибутами {self.description}, {self.price}, {self.color}, {self.quantity}, {self.manufacturer_country}, {self.germination_period}.'
-
