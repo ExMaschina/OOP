@@ -1,3 +1,6 @@
+from src.abs_and_mixin import AbsProd
+
+
 class Category:
     """Класс Category"""
     name: str  # название

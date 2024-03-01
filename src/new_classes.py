@@ -1,7 +1,8 @@
 from src.classes import Category, Product
+from src.abs_and_mixin import MixinRepr
 
 
-class Smartphone(Product):
+class Smartphone(Product, MixinRepr):
     performance: int  # производительность
     model: str  # модель
     memory_capacity: int  # объём встроенной памяти
@@ -22,7 +23,7 @@ class Smartphone(Product):
         return f'Объект {self.name} с атрибутами {self.description}, {self.price}, {self.color}, {self.quantity}, {self.performance}, {self.model}, {self.memory_capacity}.'
 
 
-class LawnGrass(Product):
+class LawnGrass(Product, MixinRepr):
     manufacturer_country: str  # страна-производитель
     germination_period: float  # срок прорастания
 
@@ -40,20 +41,3 @@ class LawnGrass(Product):
     def __repr__(self):
         return f'Объект {self.name} с атрибутами {self.description}, {self.price}, {self.color}, {self.quantity}, {self.manufacturer_country}, {self.germination_period}.'
 
-
-class MixinRepr:
-
-    def __init__(self):
-        self.name = self.name
-        self.description = self.description
-        self.price = self.price
-        self.color = self.color
-        self.quantity = self.quantity
-        self.manufacturer_country = self.manufacturer_country
-        self.germination_period = self.germination_period
-        self.performance = self.performance
-        self.model = self.model
-        self.capacity = self.capacity
-
-    def repr_out(self):
-        print(f'Объект {self.name}; {self.description}, {self.price}, {self.color}, {self.quantity}, {self.manufacturer_country}, {self.germination_period}')
