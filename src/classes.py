@@ -1,4 +1,4 @@
-from src.abs_and_mixin import AbsProd
+from abs_and_mixin import AbsProd
 
 
 class Category:
@@ -57,13 +57,13 @@ class Product(AbsProd):
     quantity: int  # количество в наличии
     product_list = []  #
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, color, quantity):
         self.name = name
         self.description = description
         self.__price = price
         self.color = color
         self.quantity = quantity
-        __repr__()
+        print(repr(self))
 
     @classmethod
     def new_product(cls, product_list, name, description, price, quantity):
