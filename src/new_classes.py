@@ -1,5 +1,5 @@
-from src.classes import Category, Product
-from src.abs_and_mixin import MixinRepr
+from classes import Category, Product
+from abs_and_mixin import MixinRepr
 
 
 class Smartphone(Product, MixinRepr):
@@ -8,11 +8,11 @@ class Smartphone(Product, MixinRepr):
     memory_capacity: int  # объём встроенной памяти
 
     def __init__(self, name, description, price, color, quantity, performance, model, memory_capacity):
-        super().__init__(name, description, color, price, quantity)
+        super().__init__(name, description, price, color, quantity)
         self.performance = performance
         self.model = model
         self.memory_capacity = memory_capacity
-        __repr__()
+        print(repr(self))
 
     def new_product(self):
         pass
@@ -29,10 +29,12 @@ class LawnGrass(Product, MixinRepr):
         super().__init__(name, description, price, color, quantity)
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
-        __repr__()
-
+        print(repr(self))
     def new_product(self):
         pass
 
     def price(self):
         pass
+
+
+smart = Smartphone("iphone", "good", 55, "red", 43, 10000, "pro", 4000)
