@@ -58,12 +58,12 @@ class Product(AbsProd):
     product_list = []  #
 
     def __init__(self, name, description, price, color, quantity):
+        super().__init__()
         self.name = name
         self.description = description
         self.__price = price
         self.color = color
         self.quantity = quantity
-        print(repr(self))
 
     @classmethod
     def new_product(cls, product_list, name, description, price, quantity):
