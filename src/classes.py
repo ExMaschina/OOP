@@ -66,18 +66,10 @@ class Product(AbsProd):
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, product_list, name, description, price, quantity):
+    def creates_product(cls, name, description, price, quantity, color):
         """Создание нового объекта товара и проверка совпадения нового объекта товара с текущим"""
-        new_object = cls(name, description, price, quantity)
+        return cls(name, description, price, quantity, color)
 
-        if not isinstance(other, Product):
-            raise ValueError('Добавлять можно только объекты Product и дочерние от них.')
-        for product in product_list:
-            if product.name == new_object.name:
-                product.quantity += new_object.quantity
-                if new_object.price > product.price:
-                    product.price = new_object.price
-        return new_object
 
     @property
     def price(self):
