@@ -1,4 +1,4 @@
-from abs_and_mixin import AbsProd
+from abs_and_mixin import AbsProd, MixinRepr
 
 
 class Category:
@@ -27,6 +27,7 @@ class Category:
 
     @property
     def goods(self):
+        """Геттер, выводящий список товаров"""
         product_list = []
         for product in self.__products:
             product_list.append(f'{product.name}, {int(product.price)} руб. Остаток: {product.quantity} шт.')
@@ -76,7 +77,7 @@ class Product(AbsProd):
         return self.__price
 
     @price.setter
-    def price(self,price):
+    def price(self, price):
         if price > self.__price:
             self.__price = price
         elif price < 0 or price == self.__price:

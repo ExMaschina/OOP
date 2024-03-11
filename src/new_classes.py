@@ -1,5 +1,5 @@
 from classes import Category, Product
-from abs_and_mixin import MixinRepr
+from abs_and_mixin import MixinRepr, AbsProd
 
 
 class Smartphone(Product, MixinRepr):
@@ -12,12 +12,13 @@ class Smartphone(Product, MixinRepr):
         self.performance = performance
         self.model = model
         self.memory_capacity = memory_capacity
+        print(repr(self))
 
-    def new_product(self):
-        return f'Новый смартфон'
 
-    def price(self):
-        pass
+    @classmethod
+    def creates_product(cls, name, description, price, quantity, color, performance, model, memory_capacity):
+        """Создание нового объекта товара и проверка совпадения нового объекта товара с текущим"""
+        return cls(name, description, price, quantity, color, performance, model, memory_capacity)
 
 
 class LawnGrass(Product, MixinRepr):
@@ -29,11 +30,15 @@ class LawnGrass(Product, MixinRepr):
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
 
-    def new_product(self):
-        return f'Новая трава'
+    @classmethod
+    def creates_product(cls, name, description, price, color, quantity, manufacturer_country, germination_period):
+        """Создание нового объекта товара и проверка совпадения нового объекта товара с текущим"""
+        return cls(name, description, price, color, quantity, manufacturer_country, germination_period)
 
-    def price(self):
-        pass
 
+smart = Smartphone("iPhone", "good", 55, "red", 40, 10000, "pro", 4000)
 
-smart = Smartphone("iphone", "good", 55, "red", 43, 10000, "pro", 4000)
+smart1 = Smartphone.creates_product("Xiaomi", "bad", 5, 1, "pink", 10, "super max", 2)
+
+print(smart)
+
