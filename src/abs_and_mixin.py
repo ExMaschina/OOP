@@ -2,6 +2,13 @@ from abc import ABC, abstractmethod
 
 
 class AbsProd(ABC):
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def __add__(self):
+        pass
 
     @abstractmethod
     def new_product(self):
@@ -17,8 +24,9 @@ class AbsProd(ABC):
 
 class MixinRepr:
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
     def __repr__(self):
-        return f'Объект {self.name}; {self.description}, {self.price}, {self.color}, {self.quantity}, {self.manufacturer_country}, {self.germination_period}'
+        object_attributes = ''
+        for k, v in self.__dict__.items():
+            object_attributes += f'создан объект{self.__class__.__name__} {k}: {v},'
+        return object_attributes
+
