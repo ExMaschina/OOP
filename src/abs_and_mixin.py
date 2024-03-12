@@ -7,6 +7,10 @@ class AbsProd(ABC):
         pass
 
     @abstractmethod
+    def creates_product(self):
+        pass
+
+    @abstractmethod
     def __add__(self, other):
         pass
 
@@ -16,6 +20,10 @@ class AbsProd(ABC):
 
 
 class MixinRepr:
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def __repr__(self):
         object_attributes = f'Создан объект {self.__class__.__name__} '
         for k, v in self.__dict__.items():

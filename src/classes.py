@@ -49,7 +49,7 @@ class Category:
         return f"Category{self.name}; {self.description}; {self.products}"
 
 
-class Product(AbsProd):
+class Product(MixinRepr, AbsProd):
     """Класс Product"""
     name: str  # название
     description: str  # описание
@@ -59,18 +59,18 @@ class Product(AbsProd):
     product_list = []  #
 
     def __init__(self, name, description, price, color, quantity):
-        super().__init__()
         self.name = name
         self.description = description
         self.__price = price
         self.color = color
         self.quantity = quantity
+        print(repr(self))
+        super().__init__()
 
     @classmethod
     def creates_product(cls, name, description, price, quantity, color):
         """Создание нового объекта товара и проверка совпадения нового объекта товара с текущим"""
         return cls(name, description, price, quantity, color)
-
 
     @property
     def price(self):
@@ -101,3 +101,8 @@ class Product(AbsProd):
         if not isinstance(other, Product):
             raise ValueError('Складывать можно только объекты Product и дочерние от них.')
         return (self.quantity * self.__price) + (other.quantity * other.__price)
+
+
+prod = Product("prod", "good", 50, 'white', 10)
+print(prod)
+

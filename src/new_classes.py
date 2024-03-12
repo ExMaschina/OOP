@@ -29,6 +29,8 @@ class LawnGrass(Product, MixinRepr):
         super().__init__(name, description, price, color, quantity)
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
+        print(repr(self))
+
 
     @classmethod
     def creates_product(cls, name, description, price, color, quantity, manufacturer_country, germination_period):
@@ -36,9 +38,9 @@ class LawnGrass(Product, MixinRepr):
         return cls(name, description, price, color, quantity, manufacturer_country, germination_period)
 
 
-smart = Smartphone("iPhone", "good", 55, "red", 40, 10000, "pro", 4000)
-
-smart1 = Smartphone.creates_product("Xiaomi", "bad", 5, 1, "pink", 10, "super max", 2)
-
+smart = Smartphone("iPhone", "good smartphone", 55, "red", 40, 10000, "pro", 4000)
 print(smart)
+
+grass = LawnGrass('grass', 'good grass', 2, 'green', 4, 'Germany', 4.5)
+print(grass)
 
