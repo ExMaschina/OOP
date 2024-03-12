@@ -12,7 +12,6 @@ class Smartphone(Product, MixinRepr):
         self.performance = performance
         self.model = model
         self.memory_capacity = memory_capacity
-        print(repr(self))
 
 
     @classmethod
@@ -29,7 +28,6 @@ class LawnGrass(Product, MixinRepr):
         super().__init__(name, description, price, color, quantity)
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
-        print(repr(self))
 
 
     @classmethod
