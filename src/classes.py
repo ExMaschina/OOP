@@ -64,7 +64,6 @@ class Product(MixinRepr, AbsProd):
         self.__price = price
         self.color = color
         self.quantity = quantity
-        print(repr(self))
         super().__init__()
 
     @classmethod
