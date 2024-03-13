@@ -1,8 +1,11 @@
+from typing import Any
+
 from abs_and_mixin import AbsProd, MixinRepr
 
 
 class Category:
     """Класс Category"""
+    global result
     name: str  # название
     description: str  # описание
     products: int  # продукты
@@ -34,13 +37,26 @@ class Category:
         return product_list
 
     def add_products(self, product):
-        self.__products.append(product)
+        if isinstance(product, Product):
+            if product.quantity == 0:
+                raise ValueError('Товар с нулевым количеством не может быть добавлен')
+            self.__products.append(product)
+            return self.__products
+        raise TypeError('Добавить только продукт')
 
     def __len__(self):
         quant = 0
         for product in self.__products:
             quant += product.quantity
         return quant
+
+    def average_price_products(self):
+        """Метод подсчитывает средний ценник всех товаров"""
+        try:
+            average = [i.price for i in self.products()]
+            return sum(average) / len(average)
+        except ZeroDivisionError:
+            return 0
 
     def __str__(self):
         return f'{self.name}, количество продуктов: {len(self)} шт.'
@@ -64,6 +80,8 @@ class Product(MixinRepr, AbsProd):
         self.__price = price
         self.color = color
         self.quantity = quantity
+        if quantity < 1:
+            raise ValueError('Товар с нулевым количеством не может быть добавлен')
         super().__init__()
 
     @classmethod
